@@ -6,6 +6,18 @@
         xmlns:local="clr-namespace:体温单"
         mc:Ignorable="d"
         Title="TemperatureWindow" Height="1000" Width="750" Loaded="Window_Loaded">
+	<Window.Resources>
+		<Style x:Key="thumbStyle" TargetType="{x:Type Thumb}">
+			<Setter Property ="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="Thumb">
+							<Ellipse Width="8" Height="8" StrokeThickness="0" Fill="IndianRed"></Ellipse>
+						</ControlTemplate>
+					</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Name="scrollViewerDesignVisual" Background="Transparent">
 		<Grid Height="920" Width="680">
 			<Grid.RowDefinitions>
@@ -21,7 +33,18 @@
 					<RowDefinition Height="*"></RowDefinition>
 					<RowDefinition Height="3*"></RowDefinition>
 				</Grid.RowDefinitions>
-				<TextBlock Grid.Row="0" FontSize="20" Name="hospitalName" Text="清远联合医院" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+				<Grid  Grid.Row="0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="体温："></TextBlock>
+					<TextBox KeyDown="Test_KeyDown" Name="temTextBox" Grid.Column="0" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+					<TextBlock Grid.Column="1" FontSize="20" Name="hospitalName" Text="清远联合医院" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+					<TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="脉搏："></TextBlock>
+					<TextBox KeyDown="Test_KeyDown" Name="ThrobTextBox" Grid.Column="2" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+				</Grid>
 				<TextBlock Grid.Row="1" FontSize="20" Text="体       温       单" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 				<StackPanel Grid.Row="2" Orientation="Horizontal">
 					<TextBlock VerticalAlignment="Center" Text="姓名："></TextBlock>
@@ -31,13 +54,13 @@
 					<TextBlock VerticalAlignment="Center" Text="性别："></TextBlock>
 					<TextBlock Name="sexTextblock"  VerticalAlignment="Center" Text="男" Margin="0,0,20,0"></TextBlock>
 					<TextBlock VerticalAlignment="Center" Text="病区："></TextBlock>
-					<TextBlock Name="wardTextblock"  VerticalAlignment="Center" Text="输液病区" Margin="0,0,20,0"></TextBlock>
+					<TextBlock Name="wardTextblock"  VerticalAlignment="Center" Text="外一科病区" Margin="0,0,20,0"></TextBlock>
 					<TextBlock VerticalAlignment="Center" Text="床号："></TextBlock>
-					<TextBlock Name="bednoTextblock"  VerticalAlignment="Center" Text="506" Margin="0,0,20,0"></TextBlock>
+					<TextBlock Name="bednoTextblock"  VerticalAlignment="Center" Text="5" Margin="0,0,20,0"></TextBlock>
 					<TextBlock VerticalAlignment="Center" Text="入院日期："></TextBlock>
-					<TextBlock Name="dateTextblock"  VerticalAlignment="Center" Text="2017-09-01" Margin="0,0,20,0"></TextBlock>
+					<TextBlock Name="dateTextblock"  VerticalAlignment="Center" Text="2017/09/01" Margin="0,0,20,0"></TextBlock>
 					<TextBlock VerticalAlignment="Center" Text="住院号："></TextBlock>
-					<TextBlock Name="hpnoTextblock"  VerticalAlignment="Center" Text="20"></TextBlock>
+					<TextBlock Name="hpnoTextblock"  VerticalAlignment="Center" Text="10003606"></TextBlock>
 				</StackPanel>
 				<Grid Name="tableheadGrid" Grid.Row="3">
 					<Grid.RowDefinitions>
@@ -174,7 +197,14 @@
 					<TextBlock Text=" 其它" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
 				</Border>
 			</Grid>
-			<TextBlock Name="weekTextblock" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="第  2  周"></TextBlock>
+			<Grid  Grid.Row="3">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="1" Name="weekTextblock" VerticalAlignment="Center" HorizontalAlignment="Center" Text="第  2  周"></TextBlock>
+			</Grid>
 		</Grid>
 	</ScrollViewer>
 </Window>
